@@ -1,15 +1,20 @@
 import React from "react";
 import "./sidebar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const SideBar = (props) => {
   return (
     <div className="App-sidebar">
       <nav className="App-sidebar-nav">
-        <Link to="/" className="active">
+        <NavLink exact to="/" activeClassName="active">
           Product
-        </Link>
-        <Link to="/cart">Cart</Link>
+        </NavLink>
+        <NavLink to="/cart" activeClassName="active">
+          Cart
+        </NavLink>
+        <NavLink to="/add-product" activeClassName="active">
+          Add product
+        </NavLink>
       </nav>
     </div>
   );

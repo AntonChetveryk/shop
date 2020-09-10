@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Components
-import SideBar from "./components/sidebar";
+import AddProduct from "./containers/add-product";
 import Cart from "./containers/cart";
 import ProductList from "./containers/product-list";
+import Layout from "./components/Layout";
 
 // CSS
 import "./App.css";
@@ -18,18 +19,11 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">
-                <Link to="/">My simple shop</Link>
-              </h1>
-            </header>
-            <div className="App-wrapper">
-              <SideBar />
-              <Route exact path="/" component={ProductList} />
-              <Route path="/cart" component={Cart} />
-            </div>
-          </div>
+          <Layout>
+            <Route exact path="/" component={ProductList} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/add-product" component={AddProduct} />
+          </Layout>
         </Switch>
       </Router>
     );
