@@ -11,4 +11,9 @@
   padding: 10px 0;
   cursor: pointer;
   color: #fff;
+  text-decoration: none;
+}
+
+.App-sidebar-nav .active {
+  text-decoration: underline;
 }
