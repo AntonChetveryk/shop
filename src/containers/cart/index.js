@@ -1,20 +1,24 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import './cart.css';
+import "./cart.css";
 
 export class Cart extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
-    return (<div className="App-cart">
-      {this.props.inCart.length ? 'There is some items in you cart' : 'Your cart is empty :('}
-    </div>);
+    return (
+      <div className="App-cart">
+        {this.props.inCart.length
+          ? "There is some items in you cart"
+          : "Your cart is empty :("}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = state => ({...state});
+const mapStateToProps = (state) => ({ ...state.cart });
 
 export default connect(mapStateToProps)(Cart);

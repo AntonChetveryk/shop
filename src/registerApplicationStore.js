@@ -1,6 +1,8 @@
-import {createStore} from 'redux';
-import shopReducer from './reducers/shop.reducer';
+import { createStore, applyMiddleware } from "redux";
+import reducer from "./reducers";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
 export default function setupStore() {
-  return createStore(shopReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  return createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 }

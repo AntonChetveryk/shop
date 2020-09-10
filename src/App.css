@@ -1,16 +1,20 @@
 .App {
-    text-align: left;
+  text-align: left;
 }
 
 .App-header {
-    background-color: #222;
-    height: 50px;
-    padding: 20px;
-    color: white;
+  background-color: #222;
+  height: 50px;
+  padding: 20px;
+}
+
+.App-header a {
+  color: white;
+  text-decoration: none;
 }
 
 .App-wrapper {
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }

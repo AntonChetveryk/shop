@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import './product-list.css';
+import "./product-list.css";
 
 export class ProductList extends Component {
   constructor(props) {
@@ -15,22 +15,21 @@ export class ProductList extends Component {
       <div className="product_list_item" key={index}>
         <p>{i.name}</p>
         <p>Price: {i.price}</p>
-        <p>{i.available > 0 ? 'In stock' : 'Sold out'}</p>
-        <button className="add-to-cart-btn" onClick={() => this.addToCart()}>Add to card</button>
+        <p>{i.available > 0 ? "In stock" : "Sold out"}</p>
+        <button className="add-to-cart-btn" onClick={() => this.addToCart()}>
+          Add to card
+        </button>
       </div>
     ));
   }
 
-  addToCart() {
-  }
+  addToCart() {}
 
   render() {
-    return (<div className="App-product_list">
-      {this.renderProducts()}
-    </div>);
+    return <div className="App-product_list">{this.renderProducts()}</div>;
   }
 }
 
-const mapStateToProps = state => ({...state});
+const mapStateToProps = (state) => ({ ...state.products });
 
 export default connect(mapStateToProps)(ProductList);
