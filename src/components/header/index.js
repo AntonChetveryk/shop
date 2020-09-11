@@ -11,9 +11,9 @@ function Header(props) {
       <h1 className="App-title">
         <Link to="/">My simple shop</Link>
       </h1>
-      <button className="App-btn">
-        <Link to="add-product">Add product</Link>
-      </button>
+      <Link to="add-product" className="add-product">
+        Add product
+      </Link>
       <div className="app-cart">
         <Link to="/cart">{`Cart ${props.inCart.length}`}</Link>
       </div>

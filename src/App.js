@@ -15,7 +15,7 @@ export default class App extends Component {
     fetch("http://localhost:5000", {
       method: "GET",
       mode: "no-cors",
-    }).then((res) => console.log(res));
+    }).then((res) => console.log(res.body));
   }
 
   render() {
