@@ -11,9 +11,12 @@ import Layout from "./components/Layout";
 import "./App.css";
 
 export default class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  componentDidMount() {
+    fetch("http://localhost:5000", {
+      method: "GET",
+      mode: "no-cors",
+    }).then((res) => console.log(res));
+  }
 
   render() {
     return (
