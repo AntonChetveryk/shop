@@ -16,11 +16,12 @@ export class ProductList extends Component {
   };
 
   onClick = (i) => {
-    const { addToCart, reduceAvailable, inCart } = this.props;
+    const { addToCart, reduceAvailable, inCart, history } = this.props;
     const isAdded = inCart.find((item) => item.name === i.name);
     if (!isAdded) {
       addToCart(i);
       reduceAvailable(i);
+      history.push("/cart");
     } else {
       alert("Product has already been added");
     }
