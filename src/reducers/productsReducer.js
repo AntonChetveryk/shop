@@ -1,6 +1,7 @@
 import { GET_PRODUCT_LIST } from "../actions/products.action";
 import { REDUCE_AVALIABLE } from "../actions/products.action";
 import { INCREASE_AVALIABLE } from "../actions/products.action";
+import { ADD_NEW_PRODUCT } from "../actions/products.action";
 
 const initState = {
   products: [
@@ -62,7 +63,7 @@ export default (state = initState, action) => {
     case GET_PRODUCT_LIST:
       return state;
     case REDUCE_AVALIABLE:
-      const newArr = state.products.map((product) => {
+      const reducedArr = state.products.map((product) => {
         if (product.name === action.payload.name) {
           product.available -= 1;
           return product;
@@ -70,11 +71,19 @@ export default (state = initState, action) => {
           return product;
         }
       });
-
-      return { ...state, products: newArr };
+      return { ...state, products: reducedArr };
     case INCREASE_AVALIABLE:
-      console.log("INCREASE");
-      return state;
+      const increasedArr = state.products.map((product) => {
+        if (product.name === action.payload.name) {
+          product.available += 1;
+          return product;
+        } else {
+          return product;
+        }
+      });
+      return { ...state, products: increasedArr };
+    case ADD_NEW_PRODUCT:
+      return { ...state, products: [...state.products, action.product] };
     default:
       return state;
   }

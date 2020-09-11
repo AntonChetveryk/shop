@@ -6,6 +6,15 @@ import { reduceAvailable } from "../../actions/products.action";
 import "./product-list.css";
 
 export class ProductList extends Component {
+  state = {
+    value: "name",
+  };
+
+  onChange = (e) => {
+    const { value } = e.target;
+    this.setState({ value: value });
+  };
+
   onClick = (i) => {
     const { addToCart, reduceAvailable, inCart } = this.props;
     const isAdded = inCart.find((item) => item.name === i.name);
@@ -19,8 +28,17 @@ export class ProductList extends Component {
 
   renderProducts() {
     const { products } = this.props;
+    const filteredArray = (value) => {
+      if (value === "name") {
+        return products.sort((a, b) => a.name.localeCompare(b.name));
+      } else {
+        return products.sort((a, b) => {
+          return a[value] - b[value];
+        });
+      }
+    };
 
-    return products.map((i, index) => (
+    return filteredArray(this.state.value).map((i, index) => (
       <div className="product_list_item" key={index}>
         <p>{i.name}</p>
         <p>Price: {i.price}</p>
@@ -37,7 +55,21 @@ export class ProductList extends Component {
   }
 
   render() {
-    return <div className="App-product_list">{this.renderProducts()}</div>;
+    return (
+      <div>
+        <div className="select-container">
+          <label>
+            <span className="sort">Sort:</span>
+            <select id="select" onChange={this.onChange}>
+              <option value="name">Name</option>
+              <option value="price">Price</option>
+              <option value="available">Availability</option>
+            </select>
+          </label>
+        </div>
+        <div className="App-product_list">{this.renderProducts()}</div>
+      </div>
+    );
   }
 }
 
