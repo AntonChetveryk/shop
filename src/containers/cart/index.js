@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import CartItem from "./cart-item";
 import "./cart.css";
 
-export class Cart extends Component {
+class Cart extends Component {
   renderProducts() {
     const { inCart } = this.props;
 
-    return inCart.map((i, index) => (
-      <div className="product_list_item" key={index}>
-        <p>{i.name}</p>
-        <p>Price: {i.price}</p>
-        <p>{i.available > 0 ? "In stock" : "Sold out"}</p>
-        <button className="add-to-cart-btn">Delete</button>
-      </div>
-    ));
+    return inCart.map((i, index) => <CartItem i={i} key={index} />);
   }
 
   render() {
     return (
-      <div className="App-product_list">
+      <div className="cart-product_list">
         {this.props.inCart.length
           ? this.renderProducts()
           : "Your cart is empty :("}

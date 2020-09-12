@@ -1,0 +1,40 @@
+.handler-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.counter {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.handler-btn-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  border-left: 1px solid #000;
+  background-color: lightgray;
+  border-radius: 0 10px 10px 0;
+}
+
+.handler-btn-container div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.handler-btn-container div:hover {
+  opacity: 0.7;
+}
+
+.handler-btn-container div:first-child {
+  border-bottom: 1px solid #000;
+}

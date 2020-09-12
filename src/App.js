@@ -1,26 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
 // Components
 import AddProduct from "./containers/add-product";
 import Cart from "./containers/cart";
 import ProductList from "./containers/product-list";
 import Layout from "./components/Layout";
+import { getProductList } from "./actions/products.action";
 
 // CSS
 import "./App.css";
 
-export default class App extends Component {
-  componentDidMount() {
-    fetch("http://localhost:5000/")
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
-
+class App extends Component {
   render() {
     return (
-      <Router basename="shop">
+      <Router>
         <Switch>
           <Layout>
             <Route exact path="/" component={ProductList} />
@@ -32,3 +27,8 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({ ...state.products, ...state.cart });
+const mapDispatchToProps = { getProductList };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNewProduct } from "../../actions/products.action";
+import { v4 as uuidv4 } from "uuid";
 
 import "./add.css";
 
-export class AddProduct extends Component {
+class AddProduct extends Component {
   state = {
     name: "",
     price: "",
@@ -25,6 +26,7 @@ export class AddProduct extends Component {
         name,
         price: Number(price),
         available: Number(available),
+        id: uuidv4(),
       });
       history.push("/");
     } else {
