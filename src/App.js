@@ -12,10 +12,10 @@ import "./App.css";
 
 export default class App extends Component {
   componentDidMount() {
-    fetch("http://localhost:5000", {
-      method: "GET",
-      mode: "no-cors",
-    }).then((res) => console.log(res.body));
+    fetch("http://localhost:5000/")
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   render() {
