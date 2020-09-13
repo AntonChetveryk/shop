@@ -82,7 +82,7 @@ export default (state = initState, action) => {
           return product;
         }
       });
-      console.log(initState.products[0]);
+
       return { ...state, products: reducedArr };
     case INCREASE_AVALIABLE:
       const increasedArr = state.products.map((product) => {
@@ -97,12 +97,10 @@ export default (state = initState, action) => {
     case ADD_NEW_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case RESET_AVAILABLE:
+      console.log("RESET");
       const newArr = state.products.map((product) => {
-        if (product.id === action.payload.id) {
-          let initAvailable = initState.products.find(
-            (item) => item.id === action.payload.id
-          );
-          product.available = initAvailable.available;
+        if (product.id === action.payload.i.id) {
+          product.available += action.payload.current;
           return product;
         } else {
           return product;

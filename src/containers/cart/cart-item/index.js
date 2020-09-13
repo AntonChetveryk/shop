@@ -16,8 +16,9 @@ class CartItem extends Component {
   };
 
   onClick = () => {
-    const { i, removeFromCart } = this.props;
+    const { i, removeFromCart, resetAvailable } = this.props;
     removeFromCart(i);
+    resetAvailable({ i: i, current: this.state.counter });
   };
 
   increaseCounter = () => {
@@ -36,7 +37,7 @@ class CartItem extends Component {
 
   reduceCounter = () => {
     const { i, increaseAvailable } = this.props;
-    if (this.state.counter > 0) {
+    if (this.state.counter > 1) {
       this.setState(
         (state) => {
           return { counter: state.counter - 1 };
