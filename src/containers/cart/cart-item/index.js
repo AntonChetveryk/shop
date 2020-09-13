@@ -5,6 +5,7 @@ import { removeFromCart } from "../../../actions/cart.actions";
 import {
   reduceAvailable,
   increaseAvailable,
+  resetAvailable,
 } from "../../../actions/products.action";
 
 import "./cart-item.css";
@@ -68,6 +69,7 @@ const mapDispatchToProps = {
   removeFromCart,
   reduceAvailable,
   increaseAvailable,
+  resetAvailable,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

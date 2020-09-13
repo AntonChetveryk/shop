@@ -2,6 +2,7 @@ import { GET_PRODUCT_LIST } from "../actions/products.action";
 import { REDUCE_AVALIABLE } from "../actions/products.action";
 import { INCREASE_AVALIABLE } from "../actions/products.action";
 import { ADD_NEW_PRODUCT } from "../actions/products.action";
+import { RESET_AVAILABLE } from "../actions/products.action";
 
 const initState = {
   products: [
@@ -71,7 +72,7 @@ const initState = {
 export default (state = initState, action) => {
   switch (action.type) {
     case GET_PRODUCT_LIST:
-      return { ...state, products: action.payload };
+      return { ...state };
     case REDUCE_AVALIABLE:
       const reducedArr = state.products.map((product) => {
         if (product.id === action.payload.id) {
@@ -81,6 +82,7 @@ export default (state = initState, action) => {
           return product;
         }
       });
+      console.log(initState.products[0]);
       return { ...state, products: reducedArr };
     case INCREASE_AVALIABLE:
       const increasedArr = state.products.map((product) => {
@@ -94,6 +96,19 @@ export default (state = initState, action) => {
       return { ...state, products: increasedArr };
     case ADD_NEW_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
+    case RESET_AVAILABLE:
+      const newArr = state.products.map((product) => {
+        if (product.id === action.payload.id) {
+          let initAvailable = initState.products.find(
+            (item) => item.id === action.payload.id
+          );
+          product.available = initAvailable.available;
+          return product;
+        } else {
+          return product;
+        }
+      });
+      return { ...state, products: newArr };
     default:
       return state;
   }

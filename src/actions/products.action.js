@@ -2,6 +2,7 @@ export const GET_PRODUCT_LIST = "GET_PRODUCT_LIST";
 export const REDUCE_AVALIABLE = "REDUCE_AVALIABLE";
 export const INCREASE_AVALIABLE = "INCREASE_AVALIABLE";
 export const ADD_NEW_PRODUCT = "ADD_NEW_PRODUCT";
+export const RESET_AVAILABLE = "RESET_AVAILABLE";
 
 export const getProductList = (payload) => ({
   type: GET_PRODUCT_LIST,
@@ -19,3 +20,5 @@ export const increaseAvailable = (payload) => ({
   type: INCREASE_AVALIABLE,
   payload,
 });
+
+export const resetAvailable = (payload) => ({ type: RESET_AVAILABLE, payload });
