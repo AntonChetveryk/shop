@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../actions/cart.actions";
-import { reduceAvailable } from "../../actions/products.action";
 
 import "./product-list.css";
 
@@ -16,11 +15,11 @@ export class ProductList extends Component {
   };
 
   onClick = (i) => {
-    const { addToCart, reduceAvailable, inCart, history } = this.props;
+    const { addToCart, inCart, history } = this.props;
     const isAdded = inCart.find((item) => item.name === i.name);
     if (!isAdded) {
       addToCart(i);
-      reduceAvailable(i);
+
       history.push("/cart");
     } else {
       alert("Product has already been added");
@@ -77,7 +76,6 @@ export class ProductList extends Component {
 const mapStateToProps = (state) => ({ ...state.products, ...state.cart });
 const mapDispatchToProps = {
   addToCart,
-  reduceAvailable,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

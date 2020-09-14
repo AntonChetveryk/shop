@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Handler from "../handler";
 import { removeFromCart } from "../../../actions/cart.actions";
-import {
-  reduceAvailable,
-  increaseAvailable,
-  resetAvailable,
-} from "../../../actions/products.action";
 
 import "./cart-item.css";
 
@@ -16,34 +11,28 @@ class CartItem extends Component {
   };
 
   onClick = () => {
-    const { i, removeFromCart, resetAvailable } = this.props;
+    const { i, removeFromCart } = this.props;
     removeFromCart(i);
-    resetAvailable({ i: i, current: this.state.counter });
   };
 
   increaseCounter = () => {
-    const { i, reduceAvailable } = this.props;
-    if (i.available > 0) {
-      this.setState(
-        (state) => {
-          return { counter: state.counter + 1 };
-        },
-        () => reduceAvailable(i)
-      );
+    const { i } = this.props;
+    const { counter } = this.state;
+
+    if (counter < i.available) {
+      this.setState((state) => {
+        return { counter: state.counter + 1 };
+      });
     } else {
       alert("This item is not in the store");
     }
   };
 
   reduceCounter = () => {
-    const { i, increaseAvailable } = this.props;
     if (this.state.counter > 1) {
-      this.setState(
-        (state) => {
-          return { counter: state.counter - 1 };
-        },
-        () => increaseAvailable(i)
-      );
+      this.setState((state) => {
+        return { counter: state.counter - 1 };
+      });
     }
   };
 
@@ -68,9 +57,6 @@ class CartItem extends Component {
 const mapStateToProps = (state) => ({ ...state.cart });
 const mapDispatchToProps = {
   removeFromCart,
-  reduceAvailable,
-  increaseAvailable,
-  resetAvailable,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
