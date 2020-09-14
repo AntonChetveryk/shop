@@ -15,7 +15,7 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <Router basename="shop">
+      <Router basaname="shop">
         <Switch>
           <Layout>
             <Route exact path="/" component={ProductList} />
