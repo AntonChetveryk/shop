@@ -7,12 +7,17 @@ import AddProduct from "./containers/add-product";
 import Cart from "./containers/cart";
 import ProductList from "./containers/product-list";
 import Layout from "./components/Layout";
-import { getProductList } from "./actions/products.action";
+import { personsFetchData } from "./actions/products.action";
 
 // CSS
 import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    const { personsFetchData } = this.props;
+    personsFetchData("https://swapi.dev/api/people");
+  }
+
   render() {
     return (
       <Router basename="/shop">
@@ -29,6 +34,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({ ...state.products, ...state.cart });
-const mapDispatchToProps = { getProductList };
+const mapDispatchToProps = { personsFetchData };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

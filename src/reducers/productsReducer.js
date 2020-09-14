@@ -1,4 +1,4 @@
-import { GET_PRODUCT_LIST } from "../actions/products.action";
+import { GET_PERSON_LIST } from "../actions/products.action";
 
 import { ADD_NEW_PRODUCT } from "../actions/products.action";
 
@@ -65,12 +65,13 @@ const initState = {
       id: 10,
     },
   ],
+  persons: [],
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case GET_PRODUCT_LIST:
-      return { ...state };
+    case GET_PERSON_LIST:
+      return { ...state, persons: action.payload };
 
     case ADD_NEW_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };

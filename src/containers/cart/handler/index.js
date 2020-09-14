@@ -19,6 +19,5 @@ class Handler extends Component {
 }
 
 const mapStateToProps = (state) => ({ ...state.products, ...state.cart });
-const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Handler);
+export default connect(mapStateToProps)(Handler);
