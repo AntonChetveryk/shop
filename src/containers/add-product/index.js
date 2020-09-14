@@ -21,7 +21,7 @@ class AddProduct extends Component {
     const { name, price, available } = this.state;
     const { history } = this.props;
     e.preventDefault();
-    if ((name, price, available)) {
+    if ((name, price, available) && price >= 0 && available >= 0) {
       this.props.addNewProduct({
         name,
         price: Number(price),

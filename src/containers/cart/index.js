@@ -7,7 +7,7 @@ class Cart extends Component {
   renderProducts() {
     const { inCart } = this.props;
 
-    return inCart.map((i, index) => <CartItem i={i} key={index} />);
+    return inCart.map((i) => <CartItem i={i} key={i.id} />);
   }
 
   render() {

@@ -24,7 +24,7 @@ class CartItem extends Component {
         return { counter: state.counter + 1 };
       });
     } else {
-      alert("This item is not in the store");
+      alert("There are no more products available");
     }
   };
 

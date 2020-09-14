@@ -38,8 +38,8 @@ export class ProductList extends Component {
       }
     };
 
-    return filteredArray(this.state.value).map((i, index) => (
-      <div className="product_list_item" key={index}>
+    return filteredArray(this.state.value).map((i) => (
+      <div className="product_list_item" key={i.id}>
         <p>{i.name}</p>
         <p>Price: {i.price}</p>
         <p>{i.available > 0 ? "In stock" : "Sold out"}</p>
